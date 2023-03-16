@@ -1,0 +1,157 @@
+*{                          /*Resetando padrões do servidor*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{                         /*Resetando padrões do servidor*/
+    list-style: none;
+}
+a{                          /*Resetando padrões do servidor*/
+    text-decoration: none;
+}
+
+body{
+    font-family: 'poppins', sans-serif;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+main::after{ /*Pseudoelemento para incluir a máscara na img de fundo*/
+    content: '';
+    min-height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(20deg, rgb(41, 39, 39) 5%, 
+    rgba(59, 58, 58, 0.059) 50%, rgb(39, 37, 37) 90%);
+}
+.conteudo{
+    display: flex;              /*Flex para ajustar conforme o tamanho da tela*/
+    flex-direction: column;     /*Para posicionar os botões abaixo conteúdo*/
+    min-height: 100vh;          /*Para ocupar toda a altura da tela*/
+    justify-content: space-evenly;    /*Para espaçar uniformemente os filhos*/
+}
+
+.logo{
+    max-width: 350px;
+    filter:invert(1);
+    margin-bottom: 80px;
+}
+.descricao{
+    width: 49%;
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 30px;
+}
+.botoes-carrossel{
+    display: flex;
+    justify-content: center;
+    gap: 20px;              /*Espaçamento entre os elementos*/
+    margin: 20px auto;
+}
+.botao{
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    border-color: #ffffff;
+}
+.botao.selecionado{         /*Configuração para quando o botão for selecionado*/
+    background-color: #1d8346;
+}
+.menu-lateral{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80px;
+    display: flex;
+    justify-content: center; /*Centralizou no eixo vertical*/
+    align-items: center;    /*Necessita dimensionar o tamanho da tela com min-height*/
+    min-height: 100vh;      /*AGORA SIM*/
+}
+ul{             /*Para configurar a distancia entre os itens laterais*/
+    display: flex;
+    flex-direction: column; /*COLUMN para ficarem um em cima do outro*/
+    gap: 15px;      /*Distanciar os itens*/
+}
+
+.menu-lateral .icone{
+    width: 30px;
+    filter: invert(1);
+    transition: 0.3s ease-in-out;   /*Animação suave para o scale*/               
+}
+.menu-lateral .icone:hover{         /*Aumenta o icone quando o cursor passa por cima*/
+    transform: scale(1.2);
+}
+.carrossel{     /*Configurar as imgs de fundo*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;    /*Eixo da profundidade, pra jogar a img pra trás do texto*/
+}
+.carrossel .imagem{
+    width: 100%;
+    height: 100vh; /*Para cobrir a altura da tela, mas assim fica distorcida*/
+    object-fit: cover; /*Para corrigir essa distorção se usa essa configuração*/
+    display: none; /*NONE para esconder as imgaens*/
+    animation: mudarImagem 0.7s; /*Animação de troca de imgs*/
+} 
+/*Usamos esta configuração para aparecer apenas a img selecionada*/
+
+.carrossel .imagem.ativa{   /*Agora configuramos para aparecer quando selecionada*/
+    display: block;
+}
+@keyframes mudarImagem{ /*Usado para criar a ANIMAÇÃO*/
+    from{
+        opacity: 0.85;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+/*Criar as configurações de RESPONSIVIDADE para outras telas*/
+@media (max-width:1280px){ /*Configurada para tela de até 1280px*/
+    body{
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 768px){  /*Configurada para tablet*/
+    .informacoes{
+        display: flex;
+        flex-direction: column; /*COLUMN para ficarem um em cima do outro*/
+        align-items: center;
+    }
+    .informacoes .descricao{
+        width: 60%;
+        text-align: center;
+    }
+}
+@media (max-width: 425px){ /*Configurada para telas de celulares*/
+    .informacoes .logo{
+        max-width: 300px;
+    }
+    .informacoes .descricao{
+        width: 100%;
+    }
+    .menu-lateral{ /*Pra jogar o menu pra baixo do conteudo*/
+        position: static;
+        min-height: auto;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .menu-lateral ul{ /*Pra deixar os links lado a lado*/
+        flex-direction: row;
+    }
+    .conteudo{
+        min-height: 70vh;
+        gap: 50px;
+    }
+    body{
+        padding: 40px;
+    }
+}
