@@ -38,7 +38,7 @@ main::after{ /*Pseudoelemento para incluir a máscara na img de fundo*/
     margin-bottom: 80px;
 }
 .descricao{
-    width: 49%;
+    width: 60%;
     font-size: 24px;
     color: #ffffff;
     line-height: 30px;
@@ -48,6 +48,7 @@ main::after{ /*Pseudoelemento para incluir a máscara na img de fundo*/
     justify-content: center;
     gap: 20px;              /*Espaçamento entre os elementos*/
     margin: 20px auto;
+    z-index: 9999;      /**/
 }
 .botao{
     background-color: #ffffff;
@@ -70,6 +71,7 @@ main::after{ /*Pseudoelemento para incluir a máscara na img de fundo*/
     justify-content: center; /*Centralizou no eixo vertical*/
     align-items: center;    /*Necessita dimensionar o tamanho da tela com min-height*/
     min-height: 100vh;      /*AGORA SIM*/
+    z-index: 9999;
 }
 ul{             /*Para configurar a distancia entre os itens laterais*/
     display: flex;
